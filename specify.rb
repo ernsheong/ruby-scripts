@@ -17,6 +17,7 @@ Dir["#{ARGV[0]}/**/*_test.rb"].each do |file|
   text.gsub! /test_(\S*)/, '"' +'\1'+'" do'
   text.gsub! /assert_redirected_to/, "response.should redirect_to"
   text.gsub! /assert_equal\((.*), (.*)\)/, '\2.should == \1'
+  text.gsub! /assert_not_equal\((.*), (.*)\)/, '\2.should_not == \1'
   text.gsub! /assert_not_nil\((.*)\)/, '\1.should_not be_nil'
   text.gsub! /assert_nil\((.*)\)/, '\1.should be_nil'
   text.gsub! /assert_response\(:success\)/, "response.should be_success"
